@@ -1,36 +1,52 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct node {
+typedef struct Node {
     int valor;
-    struct node *next;
-}node;
+    struct Node *next;
+}Node;
 
-node * CreatNode(int valor){
-    node * novo = (node *)malloc(sizeof(node));
-    novo->valor = valor;
-    novo->next = NULL;
-    return novo;
+Node * CreatNode(int valor){
+    Node * temp = (Node *)malloc(sizeof(Node));
+    temp->valor = valor;
+    temp->next = NULL;
+    return temp;
 }
 
-void add(node** head,int valor){
+void add(Node** head,int valor){
+
+    Node* novo =CreatNode(valor);
     if (*head == NULL){
-        *head = CreatNode(10);
+        *head = novo;
+        return;
     }
     else {
-
+        Node* aux = *head;
+        while (aux->next != NULL) {
+            aux = aux->next;
+        }
+        aux->next = novo;
     }
 }
 
-int main(){
-    node * head = NULL;
-    add(&head,10);
+void imprimir(Node* head){
+    Node* temp = head;
 
-    node* temp = head;
     while(temp != NULL){
         printf("%d,",temp->valor);
         temp = temp->next;
     }
+}
+
+int main(){
+    Node * head = NULL;
+    add(&head,10);
+    add(&head,20);
+    add(&head,30);
+    add(&head,40);
+    add(&head,50);
+
+    imprimir(head);
 
     return 0;
 }
