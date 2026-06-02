@@ -19,7 +19,8 @@ Node* createNode(int valor){
 }
 
 void adicionar_inicio(Node **head,int valor){
-    Node* novo = createNode(valor);
+    Node* novo = (Node*)malloc(sizeof(Node));
+    novo->valor = valor;
     novo->next = *head;
     *head = novo;
 }
@@ -191,19 +192,19 @@ int main(){
     inicializa_lista(&head);
     adicionar_inicio(&head,10);
     adicionar_inicio(&head, 20);
-    adiciona_ultimo(&head, 30);
+    //adiciona_ultimo(&head, 30);
     exibe_lista(head);
     //printf("%d\n",conta_nos(head));
     //Node* ret = busca(head, 10);
     //printf("Endereço: %p Numero: %d\n",ret,ret->valor);
     //remove_primeiro(&head);
     //exibe_lista(head);
-    adiciona_ultimo(&head, 40);
-    exibe_lista(head);
+    //adiciona_ultimo(&head, 40);
+    //exibe_lista(head);
     //remove_ultimo(&head);
     //remove_valor(&head, 30);
-    inverte_lista(&head);
-    exibe_lista(head);
+    //inverte_lista(&head);
+    //exibe_lista(head);
     //printf("%d\n",maior_valor(head));
     //libera_lista(&head);
 }
